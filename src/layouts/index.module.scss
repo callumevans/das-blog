@@ -1,0 +1,47 @@
+@import '~normalize.css';
+@import '../variables.scss';
+
+body {
+  background: $background-colour;
+  font-family: 'Scope One', serif;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .headshotContainer {
+    margin-top: 4em;
+  }
+
+  .socialIconsContainer {
+    margin-top: 2em;
+  }
+
+  .navMenuContainer {
+    margin-top: 2em;
+  }
+
+  .contentContainer {
+    margin-top: 2em;
+    width: 70vw;
+    max-width: 800px;
+  }
+}
+
+article {
+  font-size: $post-font-size;
+
+  &:not(:first-of-type) {
+    margin: 4rem 0;
+  }
+}
+
+h1 {
+  font-size: $post-title-font-size;
+}
+
+p {
+  line-height: $post-line-height;
+}

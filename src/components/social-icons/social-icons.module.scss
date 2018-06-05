@@ -1,0 +1,57 @@
+$facebook-colour: #3b5998;
+$twitter-colour: #00aced;
+$github-colour: #4e4e4e;
+$linkedin-colour: #007bb6;
+$stackoverflow-colour: #ff9900;
+
+.socialIcons {
+  font-size: 1.7em;
+
+  a {
+    margin: 0 0.5em;
+    transition: color .1s linear;
+    color: black;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:active {
+      color: inherit;
+    }
+  }
+
+  .facebook {
+    &:hover {
+      color: $facebook-colour;
+    }
+  }
+
+  .twitter {
+    &:hover {
+      color: $twitter-colour;
+    }
+  }
+
+  .github {
+    &:hover {
+      color: $github-colour;
+    }
+  }
+
+  .linkedin {
+    &:hover {
+      color: $linkedin-colour;
+    }
+  }
+
+  .stackoverflow {
+    &:hover {
+      color: $stackoverflow-colour;
+    }
+  }
+}

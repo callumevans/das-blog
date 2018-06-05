@@ -1,0 +1,26 @@
+@import '../../variables';
+
+.summaryLink {
+  text-decoration: none;
+  color: inherit;
+
+  .title {
+    margin-bottom: 0.2em;
+  }
+
+  .readMore, .publishDate {
+    font-style: italic;
+  }
+
+  &:hover {
+    .title {
+      text-decoration: underline;
+      text-decoration-color: $font-colour;
+    }
+
+    .summary, .publishDate, .readMore {
+      text-decoration: underline;
+      text-decoration-color: lighten($font-colour, 80);
+    }
+  }
+}
