@@ -17,7 +17,6 @@ const PostSummary = ({ title, summary, link, date }) => (
       <span className={styles.readMore}>Read more...</span>
     </Link>
   </article>
-
 );
 
 export default PostSummary;

@@ -1,7 +1,31 @@
 .title {
-  margin-bottom: 0.2em;
+  margin-bottom: 0.7em;
 }
 
 .publishDate {
   font-style: italic;
+}
+
+:global {
+  .gatsby-highlight {
+    margin: 2em 0;
+    font-size: 0.85em;
+
+    pre {
+      &::-webkit-scrollbar {
+        height: 6px;
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #b6b6b6;
+        border-radius: 10px;
+        margin: 1px;
+      }
+    }
+  }
 }

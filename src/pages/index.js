@@ -1,5 +1,7 @@
-import React from 'react'
-import PostSummary from '../components/post-summary/post-summary';
+import React from "react"
+import PostSummary from "../components/post-summary/post-summary"
+
+import "prismjs/themes/prism-okaidia.css"
 
 const IndexPage = ({ data }) => {
   const { allMarkdownRemark } = data;
