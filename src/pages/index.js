@@ -3,13 +3,14 @@ import SEO from "../components/seo/seo";
 import PostSummary from "../components/post-summary/post-summary";
 
 import "prismjs/themes/prism-okaidia.css"
+import Layout from '../layouts/layout'
 
 const IndexPage = ({ data }) => {
   const { allMarkdownRemark } = data;
   const { edges } = allMarkdownRemark;
 
   return (
-    <div>
+    <Layout>
       <SEO />
       {edges.map((edge, i) =>
         <PostSummary
@@ -20,7 +21,7 @@ const IndexPage = ({ data }) => {
           date={edge.node.frontmatter.date}
         />
       )}
-    </div>
+    </Layout>
   )
 }
 

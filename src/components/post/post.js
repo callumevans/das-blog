@@ -1,18 +1,23 @@
 import React from 'react';
 import styles from './post.module.scss';
+import SEO from '../seo/seo';
+import Layout from '../../layouts/layout'
 
 const Post = ({ data }) => (
-  <article>
-    <header>
-      <h1 className={styles.title}>{data.markdownRemark.frontmatter.title}</h1>
-      <time className={styles.publishDate}
-            dateTime={data.markdownRemark.frontmatter.date}
-            itemProp="datePublished">
-        {data.markdownRemark.frontmatter.date}
-      </time>
-    </header>
-    <section dangerouslySetInnerHTML={{ __html: data.markdownRemark.html}} />
-  </article>
+  <Layout>
+    <SEO postPath={data.markdownRemark.frontmatter.slug} postNode={data.markdownRemark} postSeo />
+    <article>
+      <header>
+        <h1 className={styles.title}>{data.markdownRemark.frontmatter.title}</h1>
+        <time className={styles.publishDate}
+              dateTime={data.markdownRemark.frontmatter.date}
+              itemProp="datePublished">
+          {data.markdownRemark.frontmatter.date}
+        </time>
+      </header>
+      <section dangerouslySetInnerHTML={{ __html: data.markdownRemark.html}} />
+    </article>
+  </Layout>
 )
 
 export default Post;

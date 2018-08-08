@@ -1,23 +1,23 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import styles from './index.module.scss';
+import styles from './layout.module.scss';
 
 import Headshot from '../components/headshot/headshot';
 import SocialIcons from '../components/social-icons/social-icons';
 import MainNav from '../components/main-nav/main-nav';
+import SiteConfig from '../SiteConfig'
 
 class Layout extends React.Component {
   render() {
     const {
       children,
-      data
     } = this.props;
 
     return (
       <div>
         <Helmet
-          title={data.site.siteMetadata.title}
+          title={SiteConfig.siteTitle}
           link={[
             { rel: 'stylesheet', href: "https://fonts.googleapis.com/css?family=Arvo|Scope+One" }
           ]}
@@ -45,7 +45,7 @@ class Layout extends React.Component {
           </div>
 
           <main className={styles.contentContainer}>
-            {children()}
+            {children}
           </main>
         </div>
       </div>
@@ -54,13 +54,3 @@ class Layout extends React.Component {
 }
 
 export default Layout;
-
-export const pageQuery  = graphql `
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`

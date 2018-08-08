@@ -5,24 +5,28 @@ import SiteConfig from "../../SiteConfig";
 class SEO extends React.Component {
   render() {
     const {
-      postSEO,
+      postSeo,
       postNode,
       postPath
     } = this.props;
 
     let title;
+    let image;
     let description;
     let postUrl;
 
-    if (postSEO) {
-      const postMeta = postNode.frontmatter;
+    console.warn(postSeo)
+    console.warn(postNode)
 
+    if (postSeo) {
+      const postMeta = postNode.frontmatter;
       title = postMeta.title;
 
       description = postMeta.description
         ? postMeta.description
         : postMeta.excerpt;
 
+      image = "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
       postUrl = `${SiteConfig.siteUrl}/${postPath}`;
     }
 
@@ -36,7 +40,7 @@ class SEO extends React.Component {
       }
     ];
 
-    if (postSEO) {
+    if (postSeo) {
       schemaOrgJSONLD.push(
         {
           "@context": "http://schema.org",
@@ -80,8 +84,8 @@ class SEO extends React.Component {
         </script>
 
         { /* OpenGraph */ }
-        <meta property="og:url" content={postSEO ? postUrl : SiteConfig.siteUrl} />
-        { postSEO && <meta property="og:type" content="article" /> }
+        <meta property="og:url" content={postSeo ? postUrl : SiteConfig.siteUrl} />
+        { postSeo && <meta property="og:type" content="article" /> }
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         {/*<meta property="og:image" content={image} />*/}
