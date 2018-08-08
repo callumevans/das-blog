@@ -3,8 +3,8 @@ date: "2017-11-07"
 title: "I probably don't understand SOLID principles"
 slug: "posts/i-probably-dont-understand-solid-principles/"
 ---
-I've been a professional programmer for about three years. At least every other month since starting my illustrious career,
-I've confused, misremembered, reinterpreted, revised or otherwise reconsidered changed my understanding of SOLID principles. I get the impression that this isn't entirely my fault.
+I've been a programmer for just under three years. Since starting my illustrious career, at least every other month
+I've reconsidered, reinterpreted, revised or otherwise changed changed my understanding of SOLID principles. I get the impression that this isn't entirely my fault.
 
 Scouring the internet, you might find a blog explaining the Dependency Inversion Principle. Further browsing might take you to some
 Reddit thread will contradict what you've just read. Your boss and coworkers will probably disagree with whatever you've read, and with each other.
@@ -56,7 +56,7 @@ you overcompensate for gaps in your own knowledge. That isn't helped by much of 
 being contradictory or nonsensical.
 
 Having said all this, I'm a fan of SOLID. But it's useful to remember that the word _fan_ comes from the term _fanatic_.
-To me, it's a collection of sensible ideas that usually apply, in principle, to languages and systems that aren't
+To me, SOLID is a collection of sensible ideas that often apply, in principle, to languages and systems that aren't
 just C++, Java or C#. A fact which some people don't notice. In hindsight, I wish I'd had the understanding I currently have.
 Some of the mistakes I've made when creating software could have been mitigated by sensible
 application of the principles as I see them now, though it goes without saying some of those problems wouldn't have existed were it easier

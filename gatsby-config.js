@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://ssss.com',
-    title: 'Gatsby Default Starter',
+    siteUrl: 'https://callumsblog.com',
+    title: "Callum's Blog"
   },
   plugins: [
     'gatsby-plugin-react-helmet',
