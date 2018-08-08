@@ -5,11 +5,15 @@
   color: inherit;
 
   .title {
-    margin-bottom: 0.2em;
+    margin-bottom: $post-title-bottom-margin;
   }
 
   .readMore, .publishDate {
     font-style: italic;
+  }
+
+  .publishDate {
+    font-weight: bold;
   }
 
   &:hover {

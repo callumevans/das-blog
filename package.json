@@ -8,6 +8,7 @@
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
     "gatsby-plugin-sass": "^1.0.26",
+    "gatsby-plugin-sitemap": "^1.2.25",
     "gatsby-source-filesystem": "^1.5.35",
     "gatsby-transformer-remark": "^1.7.41",
     "gatsby-remark-prismjs": "^2.0.5",

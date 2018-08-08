@@ -1,8 +1,9 @@
 .headshot {
   display: block;
-  width: 150px;
-  height: 150px;
+  width: 10em;
+  height: 10em;
   background-repeat: no-repeat;
   background-image: url("../../assets/headshot.png");
+  background-size: contain;
   border-radius: 100%;
 }
