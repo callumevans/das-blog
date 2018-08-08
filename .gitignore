@@ -1,3 +1,5 @@
+.idea/
+
 # Project dependencies
 .cache
 node_modules
