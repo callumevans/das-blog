@@ -1,5 +1,5 @@
 import React from "react";
-import SEO from "../components/seo/seo";
+import Seo from "../components/seo/seo";
 import PostSummary from "../components/post-summary/post-summary";
 
 import "prismjs/themes/prism-okaidia.css"
@@ -11,7 +11,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO />
+      <Seo />
       {edges.map((edge, i) =>
         <PostSummary
           key={i}

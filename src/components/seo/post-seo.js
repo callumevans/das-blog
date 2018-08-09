@@ -13,7 +13,6 @@ class PostSeo extends React.Component {
     const postMeta = postNode.markdownRemark.frontmatter;
 
     const title = postMeta.title;
-    const image = "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
     const description = postMeta.description;
     const postUrl = `${SiteConfig.siteUrl}/${postPath}`;
 
@@ -34,8 +33,7 @@ class PostSeo extends React.Component {
             position: 1,
             item: {
               "@id": postUrl,
-              name: title,
-              image
+              name: title
             }
           }
         ]
@@ -47,10 +45,6 @@ class PostSeo extends React.Component {
         name: title,
         alternateName: "",
         headline: title,
-        image: {
-          "@type": "ImageObject",
-          url: image
-        },
         description
       }
     ];
@@ -58,7 +52,6 @@ class PostSeo extends React.Component {
     return (
       <Helmet>
         <meta name="description" content={description} />
-        {/*<meta name="image" content={image} />*/}
 
         { /* Schema.org */ }
         <script type="application/ld+json">
@@ -67,18 +60,16 @@ class PostSeo extends React.Component {
 
         { /* OpenGraph */ }
         <meta property="og:url" content={postSeo ? postUrl : SiteConfig.siteUrl} />
-        { postSeo && <meta property="og:type" content="article" /> }
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        {/*<meta property="og:image" content={image} />*/}
         { SiteConfig.facebookAppId && <meta property="fb:app_id" content={SiteConfig.facebookAppId} /> }
 
         { /* Twitter Cards */ }
         <meta name="twitter:card" content="summary_large_image" />
-        { SiteConfig.twitterUserId && <meta name="twitter:creator" content={SiteConfig.twitterUserId} /> }
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        {/*<meta name="twitter:image" content={image} />*/}
+        { SiteConfig.twitterUserId && <meta name="twitter:creator" content={SiteConfig.twitterUserId} /> }
       </Helmet>
     )
   }
