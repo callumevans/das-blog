@@ -1,12 +1,17 @@
-import React from 'react'
-import PostSummary from '../components/post-summary/post-summary';
+import React from "react";
+import Seo from "../components/seo/seo";
+import PostSummary from "../components/post-summary/post-summary";
+
+import "prismjs/themes/prism-okaidia.css"
+import Layout from '../layouts/layout'
 
 const IndexPage = ({ data }) => {
   const { allMarkdownRemark } = data;
   const { edges } = allMarkdownRemark;
 
   return (
-    <div>
+    <Layout>
+      <Seo />
       {edges.map((edge, i) =>
         <PostSummary
           key={i}
@@ -16,7 +21,7 @@ const IndexPage = ({ data }) => {
           date={edge.node.frontmatter.date}
         />
       )}
-    </div>
+    </Layout>
   )
 }
 
@@ -24,15 +29,10 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery($limit: Int = 10) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allMarkdownRemark(limit: $limit, sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 250)
           frontmatter {
             date(formatString: "DD MMMM, YYYY")
             title

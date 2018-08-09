@@ -1,0 +1,42 @@
+@import '../../variables';
+
+.title {
+  margin-bottom: $post-title-bottom-margin;
+}
+
+.publishDate {
+  font-style: italic;
+  font-weight: bold;
+}
+
+:global {
+  :not(pre) > code[class*="language-"] {
+    padding: .3em !important;
+    font-size: .85em !important;
+    text-shadow: none !important;
+    background: #eaeaea !important;
+    color: black;
+  }
+
+  .gatsby-highlight {
+    margin: 2em 0;
+    font-size: 0.85em;
+
+    pre {
+      &::-webkit-scrollbar {
+        height: 6px;
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #b6b6b6;
+        border-radius: 10px;
+        margin: 1px;
+      }
+    }
+  }
+}

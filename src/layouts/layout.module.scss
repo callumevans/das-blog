@@ -1,5 +1,6 @@
 @import '~normalize.css';
 @import '../variables.scss';
+@import '~include-media/dist/include-media';
 
 body {
   background: $background-colour;
@@ -10,9 +11,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2em;
 
   .headshotContainer {
     margin-top: 4em;
+
+    @include media(">=phone", "<tablet") {
+      margin-top: 2em;
+      font-size: 0.75em;
+    }
   }
 
   .socialIconsContainer {
@@ -27,6 +34,11 @@ body {
     margin-top: 2em;
     width: 70vw;
     max-width: 800px;
+
+    @include media(">=phone", "<tablet") {
+      width: 85vw;
+      font-size: 0.8em;
+    }
   }
 }
 
@@ -40,8 +52,21 @@ article {
 
 h1 {
   font-size: $post-title-font-size;
+
+  @include media(">=phone", "<tablet") {
+    font-size: $post-title-font-size * 0.8;
+  }
 }
 
 p {
   line-height: $post-line-height;
+
+  a, a:visited {
+    $link-colour: #1f4d97;
+    color: $link-colour;
+
+    &:hover {
+      color: lighten($link-colour, 25);
+    }
+  }
 }

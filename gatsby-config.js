@@ -1,17 +1,32 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    siteUrl: 'https://callumsblog.com',
+    title: "Callum's Blog"
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/pages/posts`,
+        path: `${__dirname}/content/posts`,
         name: 'posts'
       }
     },
-    'gatsby-transformer-remark'
+    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              inlineCodeMarker: "›"
+            }
+          }
+        ]
+      }
+    }
   ]
 }
