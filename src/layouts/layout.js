@@ -22,14 +22,13 @@ class Layout extends React.Component {
             { rel: 'stylesheet', href: "https://fonts.googleapis.com/css?family=Arvo|Scope+One" }
           ]}
           script={[
-            { src: "https://use.fontawesome.com/releases/v5.0.13/js/brands.js" },
-            { src: "https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" }
+            { src: "https://use.fontawesome.com/releases/v5.0.13/js/brands.js", defer: true },
+            { src: "https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js", defer: true }
           ]}
           meta={[
             { name: 'description', content: SiteConfig.siteDescription }
           ]}
         />
-
         <div className={styles.mainContainer}>
           <div className={styles.headshotContainer}>
             <Headshot />

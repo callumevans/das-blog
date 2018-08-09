@@ -1,9 +1,8 @@
-const SiteConfig = {
+module.exports = {
   siteTitle: "Callum's Blog",
   siteUrl: "https://callums.blog",
   siteDescription: "Rambling about programming and related things.",
   facebookAppId: "",
-  twitterUserId: ""
+  twitterUserId: "",
+  googleTrackingId: "UA-123730403-1"
 };
-
-export default SiteConfig;
