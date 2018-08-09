@@ -26,8 +26,8 @@ class Layout extends React.Component {
             { src: "https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" }
           ]}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: 'description', content: 'Rambling about programming and related things.' },
+            { name: 'keywords', content: 'programming, software' },
           ]}
         />
 
