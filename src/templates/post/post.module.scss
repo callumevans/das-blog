@@ -13,6 +13,9 @@
   :not(pre) > code[class*="language-"] {
     padding: .3em !important;
     font-size: .85em !important;
+    text-shadow: none !important;
+    background: #eaeaea !important;
+    color: black;
   }
 
   .gatsby-highlight {

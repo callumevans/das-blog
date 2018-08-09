@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import SiteConfig from "../../SiteConfig";
 
-class SEO extends React.Component {
+class PostSeo extends React.Component {
   render() {
     const {
       postSeo,
@@ -10,20 +10,12 @@ class SEO extends React.Component {
       postPath
     } = this.props;
 
-    let title;
-    let image;
-    let description;
-    let postUrl;
+    const postMeta = postNode.markdownRemark.frontmatter;
 
-    if (postSeo) {
-      const postMeta = postNode.markdownRemark.frontmatter;
-
-      title = postMeta.title;
-      description = postMeta.description;
-
-      image = "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
-      postUrl = `${SiteConfig.siteUrl}/${postPath}`;
-    }
+    const title = postMeta.title;
+    const image = "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
+    const description = postMeta.description;
+    const postUrl = `${SiteConfig.siteUrl}/${postPath}`;
 
     const schemaOrgJSONLD = [
       {
@@ -32,41 +24,36 @@ class SEO extends React.Component {
         url: SiteConfig.siteUrl,
         name: title,
         alternateName: ""
+      },
+      {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            item: {
+              "@id": postUrl,
+              name: title,
+              image
+            }
+          }
+        ]
+      },
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        url: SiteConfig.siteUrl,
+        name: title,
+        alternateName: "",
+        headline: title,
+        image: {
+          "@type": "ImageObject",
+          url: image
+        },
+        description
       }
     ];
-
-    if (postSeo) {
-      schemaOrgJSONLD.push(
-        {
-          "@context": "http://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              item: {
-                "@id": postUrl,
-                name: title,
-                image
-              }
-            }
-          ]
-        },
-        {
-          "@context": "http://schema.org",
-          "@type": "BlogPosting",
-          url: SiteConfig.siteUrl,
-          name: title,
-          alternateName: "",
-          headline: title,
-          image: {
-            "@type": "ImageObject",
-            url: image
-          },
-          description
-        }
-      );
-    }
 
     return (
       <Helmet>
@@ -97,4 +84,4 @@ class SEO extends React.Component {
   }
 }
 
-export default SEO;
+export default PostSeo;

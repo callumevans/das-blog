@@ -3,7 +3,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
-  const blogPost = path.resolve('./src/components/post/post.js');
+  const blogPost = path.resolve('./src/templates/post/post.js');
 
   return new Promise((resolve, reject) => {
     resolve(

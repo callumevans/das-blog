@@ -1,11 +1,11 @@
-import React from 'react';
-import styles from './post.module.scss';
-import SEO from '../seo/seo';
+import React from 'react'
+import styles from './post.module.scss'
 import Layout from '../../layouts/layout'
+import PostSeo from '../../components/seo/post-seo'
 
 const Post = ({ data }) => (
   <Layout>
-    <SEO postPath={data.markdownRemark.frontmatter.slug} postNode={data.markdownRemark} postSeo />
+    <PostSeo postPath={data.markdownRemark.frontmatter.slug} postNode={data} postSeo />
     <article>
       <header>
         <h1 className={styles.title}>{data.markdownRemark.frontmatter.title}</h1>
@@ -30,6 +30,7 @@ export const pageQuery = graphql`
         date(formatString: "DD MMMM, YYYY")
         title
         slug
+        description
       }
     }
   }
