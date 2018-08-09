@@ -1,7 +1,7 @@
 const SiteConfig = {
   siteTitle: "Callum's Blog",
-  siteUrl: "https://callumsblog.com",
-  siteDescription: "",
+  siteUrl: "https://callums.blog",
+  siteDescription: "Rambling about programming and related things.",
   facebookAppId: "",
   twitterUserId: ""
 };
