@@ -51,6 +51,7 @@ class PostSeo extends React.Component {
 
     return (
       <Helmet>
+        <title>{`${title} - ${SiteConfig.siteTitle}`}</title>
         <meta name="description" content={description} />
 
         { /* Schema.org */ }
