@@ -1,11 +1,22 @@
+const SiteConfig = require('./src/SiteConfig')
+
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://callumsblog.com',
-    title: "Callum's Blog"
+    siteUrl: 'https://callums.blog',
+    title: 'Callum\'s Blog'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: SiteConfig.googleTrackingId,
+        head: true,
+        anonymize: true,
+        respectDNT: true
+      },
+    },
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-filesystem',
@@ -22,7 +33,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
-              inlineCodeMarker: "›"
+              inlineCodeMarker: '›'
             }
           }
         ]
