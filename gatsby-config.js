@@ -17,6 +17,13 @@ module.exports = {
         respectDNT: true
       },
     },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: SiteConfig.hotjarId,
+        sv: SiteConfig.hotjarSnippetVersion
+      },
+    },
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-filesystem',
