@@ -6,5 +6,5 @@ module.exports = {
   twitterUserId: "",
   googleTrackingId: "UA-123730403-1",
   hotjarId: "979081",
-  hotjarSnippetVersion: "5"
+  hotjarSnippetVersion: "6"
 };
