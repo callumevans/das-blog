@@ -17,6 +17,12 @@ module.exports = {
         respectDNT: true
       },
     },
+    {
+        resolve: `gatsby-plugin-canonical-urls`,
+        options: {
+            siteUrl: SiteConfig.siteUrl,
+        },
+    },
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-filesystem',
