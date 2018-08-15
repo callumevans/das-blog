@@ -19,11 +19,19 @@ class Layout extends React.Component {
         <Helmet
           title={SiteConfig.siteTitle}
           link={[
-            { rel: 'stylesheet', href: "https://fonts.googleapis.com/css?family=Arvo|Scope+One" }
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Arvo|Scope+One' },
+
+            { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+            { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+            { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+            { rel: 'manifest', href: '/site.webmanifest' },
+            { rel: 'mask-icon', href: 'safari-pinned-tab.svg', color: '#454545' },
+            { name: 'msapplication-TileColor', content: '#00a300' },
+            { name: 'theme-color', content: '#f5f5f5' }
           ]}
           script={[
-            { src: "https://use.fontawesome.com/releases/v5.0.13/js/brands.js", async: true },
-            { src: "https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js", async: true }
+            { src: 'https://use.fontawesome.com/releases/v5.0.13/js/brands.js', async: true },
+            { src: 'https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', async: true }
           ]}
           meta={[
             { name: 'description', content: SiteConfig.siteDescription }
