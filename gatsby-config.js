@@ -2,12 +2,13 @@ const SiteConfig = require('./src/SiteConfig')
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://callums.blog',
-    title: 'Callum\'s Blog'
+    siteUrl: SiteConfig.siteUrl,
+    title: SiteConfig.siteTitle
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-robots-txt',
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
