@@ -1,8 +1,8 @@
-import React from "react";
-import Seo from "../components/seo/seo";
-import PostSummary from "../components/post-summary/post-summary";
+import React from 'react'
+import Seo from '../components/seo/seo'
+import PostSummary from "../components/post-summary/post-summary"
 
-import "prismjs/themes/prism-okaidia.css"
+import 'prismjs/themes/prism-okaidia.css'
 import Layout from '../layouts/layout'
 
 const IndexPage = ({ data }) => {
