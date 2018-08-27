@@ -4,7 +4,7 @@ title: "Attempting sane testing"
 slug: "posts/attempting-sane-testing/"
 description:
 ---
-
+<!---
 I remember writing first unit tests. Looked back and they were horrible. Looked back again recently and what I've
 been doing is still horrible.
 
@@ -32,29 +32,26 @@ inside.
 
 Just what works for me. New to trying it.
 Whatever gives you confidence in your code and isn't so brittle as to break when you refactor internals.
-
----
-
-I remember writing my first ever unit tests at my old job. I'd been there for a couple of weeks and then I was finally
-allowed near the codebase. I had to add some basic CRUD endpoints to an ASP application.
-I think I did a pretty good job for a first-try.
-Then I proceeded to write some of the worst tests you've ever seen.
-Like, _ever_. I can't remember exactly what tests I'd written but they were something hilariously pointless like:
-
-```csharp
-// Arrange
-var service = new Mock<IService>();
-
-service
-  .Setup(x => x.TestMethod())
-  .Returns(123);
-
-// Act
-var result = service.Object.TestMethod();
-
-// Assert
-Assert.Equal(123, result);
-```
+--->
+I remember writing my first ever unit tests at my old job. I had to add some basic CRUD endpoints to an ASP application.
+It was the first bit of code I'd ever been paid to write and I was particularly keen to leave a good first impression.
+Then I proceeded to write some of the most useless tests you've ever seen. Like, _ever_. I can't remember exactly what tests
+I'd written but they were something hilariously pointless like asserting that a value I'd specified a mock to return
+was in fact the value that the mock returned.
 
 I spent at least a day writing similar tests that could never fail no matter what before I realised what I'd done.
-Sheepishly, I deleted them all and wrote new tests that
+Sheepishly, I deleted them all and wrote new tests that made an effort to actually verify some behaviours.
+It's a funny memory I have of my first few weeks as a developer, and it makes me smile to reminisce about the silly things I did.
+
+And yet, very recently I've come to the conclusion that most of the tests I've been writing since those first few weeks
+have still been frail, ineffective baggage that could never be useful to anyone other than as typing-practice.
+
+A lot of the programming I do is centred around writing web APIs. Mostly-straightforward CRUD stuff, and usually ASP Core.
+There's a lot to be said about how to go about writing tests for an ASP application versus how to write tests for
+something like a a class library. A lot of that discussion might revolve around how we ought to define a _unit_ to test,
+and to what extent should tests involve mocking.
+
+- TDD one possibility
+- Mocking is big with TDD depending on who you ask
+- TDD defines behaviours
+- What is behaviour when testing an API?
