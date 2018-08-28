@@ -39,8 +39,8 @@ Then I proceeded to write some of the most useless tests you've ever seen. Like,
 I'd written but they were something hilariously pointless like asserting that a value I'd specified a mock to return
 was in fact the value that the mock returned.
 
-I spent at least a day writing similar tests that could never fail no matter what before I realised what I'd done.
-Sheepishly, I deleted them all and wrote new tests that made an effort to actually verify some behaviours.
+I spent at least a day writing similar tests -- tests that could never fail -- before I realised what I'd done.
+Sheepishly, I deleted everything and wrote new tests that made an effort to actually verify some behaviours.
 It's a funny memory I have of my first few weeks as a developer, and it makes me smile to reminisce about the silly things I did.
 
 And yet, very recently I've come to the conclusion that most of the tests I've been writing since those first few weeks
@@ -52,6 +52,7 @@ something like a a class library. A lot of that discussion might revolve around 
 and to what extent should tests involve mocking.
 
 - TDD one possibility
+= 'Unit' sort of sounds like it's measuring a unit of code so it's understandable to see why people interpret it that way
 - Mocking is big with TDD depending on who you ask
 - TDD defines behaviours
 - What is behaviour when testing an API?
