@@ -58,18 +58,20 @@ These are pretty horrible. Let's imagine we have an API with two layers, and for
 the example framework. We'll have a _Controller Layer_ and a _Service Layer_. Our controller will take a request, and return
 the result of adding two numbers, the mathematical part of which will be computed by a service.
 
-Keeping to the TDD spirit, we would write some tests first. Let's start with some for a controller.
+Keeping to the TDD spirit, we would write some tests first. Typically, we'd introduce the separation of layers once we've
+written the initial tests à la _Red / Green / Refactor_, but we'll skip ahead to the end result. We're likely to end up with
+something like a `MathsController` and a `MathsService`, with the following tests:
 
 ```csharp
-public class ControllerTests
+public class MathsControllerTests
 {
-    private readonly Mock<IAddService> addServiceMock;
+    private readonly Mock<IMathsService> mathsServiceMock;
     private readonly MathsController controller;
 
-    public ControllerTests()
+    public MathsControllerTests()
     {
-        addServiceMock = new Mock<IAddService>();
-        controller = new MathsController(addServiceMock.Object);
+        mathsServiceMock = new Mock<IMathsService>();
+        controller = new MathsController(mathsServiceMock.Object);
     }
 
     [Fact]
@@ -79,7 +81,7 @@ public class ControllerTests
         controller.Get(10, 15);
 
         // Assert
-        addServiceMock
+        mathsServiceMock
             .Verify(x => x.Add(10, 15));
     }
 
@@ -87,7 +89,7 @@ public class ControllerTests
     public void Add_ReturnsResultFromService()
     {
         // Arrange
-        addServiceMock
+        mathsServiceMock
             .Setup(x => x.Add(10, 15))
             .Returns(999);
 
@@ -100,12 +102,12 @@ public class ControllerTests
 }
 ```
 
-And some tests for `AddService`:
+And some tests for `MathsService`:
 
 ```csharp
-public class AddServiceTests
+public class MathsServiceTests
 {
-    private readonly AddService service = new AddService();
+    private readonly MathsService service = new MathsService();
 
     [Theory]
     [InlineData(10, 20, 30)]
@@ -121,32 +123,90 @@ public class AddServiceTests
 }
 ```
 
-It's a pretty typical setup, though this approach to testing needs more compromises and can produce more problems and
-overheads than make it worthwhile. There's a lot to be said about how to go about writing tests for an ASP
+It's a pretty typical setup, though this approach to testing requires compromises and can introduce more problems and overheads
+than make it worthwhile. There's a lot to be said about how to go about writing tests for an ASP
 Web API versus how to write tests for something like a a class library. A lot of that discussion might revolve around
 how we ought to define a _unit_ to test, and to what extent should tests involve mocking. I'm not entirely sure why ASP
 developers test this way. Maybe I'm missing something, but these sorts of tests rarely catch anything worthwhile, and they
 require a lot more maintenance than the code they actually test.
 
-We've had to stick an `IAddService` interface in there to "make it testable" (a common justification for extracting an
+We've had to stick an `IMathsService` interface in there to "make it testable" (a common justification for extracting an
 interface wherever it's possible to do so), and our tests are heavily dependent on the implementation rather than the behaviour.
-So much so that if we decide that our Service Layer is pointless and we want to just have the controller calculate and return
-the result, our two `MathsController` tests will need rewriting and our `AddService` tests will be thrown out entirely. That
-might not be surprising since we're deleting `AddService`, but it could be a suggestion that we're not testing the right things.
+So much so that if we decide that our service layer is pointless and we want to just have the controller calculate and return
+the result, our two `MathsController` tests will need rewriting and our `MathsService` tests will be thrown out entirely. That
+might not be surprising since we're deleting `MathsService`, but it could be a suggestion that we're not testing the right things.
 
 Much better would be to simply write tests for the behaviours we want from the get-go. But isn't this is what we've already
 done? We've isolated the behaviours of some units  -- our controllers and services -- and written test fixtures for them.
 The problem seems to be one of definition; at least in this scenario, we've defined _unit_ in a counterproductive way.
 
-What if our application's _units_ were its behaviours? A lot of our problems go away if we take this definition for
+What if our application's units were its behaviours? A lot of our problems go away when we use this definition for
 the purposes of our little-API-that-could. We can summarise its one behaviour: "Calling the GET route should return the result
-of two numeric arguments added together". To write something to test this behaviour we're getting into the territory
-of integration testing, for which ASP Core has excellent [tooling](https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-2.1).
+of two numeric arguments added together". If we want to write tests for this behaviour in ASP Core, we might want to
+use its excellent integration test [tooling](https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-2.1).
+
+So what am I actually talking about at this point? It's not a bad question. As far as I can tell, I've decided
+to expunge mock-based unit tests where the unit is a class or a method, and replace them with
+behaviour tests written as part of a BDD/TDD workflow, but using ASP Core's integration testing framework as the backbone
+for provisioning the tests. Maybe somebody spiked my coffee.
+
+Let's see what one of these mythical tests looks like:
+
+```csharp
+// IClassFixture is an xUnit construct
+public class AddBehaviourTests : IClassFixture<WebApplicationFactory<Startup>>
+{
+    private readonly WebApplicationFactory<Startup> _factory;
+
+    public AddBehaviourTests(WebApplicationFactory<Startup> factory)
+    {
+        _factory = factory;
+    }
+
+    [Theory]
+    [InlineData(1, 2, 3)]
+    [InlineData(0, 5, 5)]
+    [InlineData(12, 11, 23)]
+    public async Task Get_AddTwoNumbers_ReturnsResultOfAddingTwoNumbers(
+        int a, int b, int expected)
+    {
+        // Arrange
+        var client = _factory.CreateClient();
+
+        // Act
+        var response = await client.GetAsync($"/maths/add?a={a}&b={b}");
+
+        // Assert
+        var result = await response.Content.ReadAsStringAsync();
+
+        Assert.Equal(expected, int.Parse(result));
+    }
+}
+```
+
+This is so simple and I absolutely love it. In a single, less-brittle test we've covered the same functionality
+that our other three tests have. We didn't need a single mock. We've written less code that needs less maintenance to do the
+same thing. We also get the added benefit of being able to test that the API can actually handle the request; if model bindings for
+our rote weren't configured or some dependencies weren't registered with the ASP service provider correctly our previous
+tests wouldn't have flagged anything. These tests are still fast enough to allow for continuous re-running, and you can step into
+and debug them without any extra effort.
+
+We're also decoupled from our implementation. If we want to remove `MathsService` and bring the logic to the controller, we can.
+If the tests don't break, we know we haven't broken anything! Since we've largely removed the need to mock things, we can cut
+out a lot of middling boilerplate work that requires us to add stupid interfaces to everything -- goodbye `IMathsService`;
+note that there exist alternative mocking approaches, even without this whacked-out testing methodology.
+[Pose](https://github.com/tonerdo/pose) and [Virtuosity](https://github.com/Fody/Virtuosity) or simply using `virtual`
+modifiers might all be better ideas than creating one-to-one interfaces for everything. Where it could make sense to mock,
+such as at IO boundaries or anything non-deterministic like the current time, we can override service injections
+configured in `Startup` just for our test-suite. It's a really, really awesome way of testing.
+
+The goal for a test suite is to give us confidence in the code
 
 - TDD one possibility
+- Classicist vs mockist
 - 'Unit' sort of sounds like it's measuring a unit of code so it's understandable to see why people interpret it that way
 - Mocking is big with TDD depending on who you ask
 - TDD defines behaviours
 - What is behaviour when testing an API?
-- Possible issues. Might be slower. Best to mix and match, maybe? Just don't write those stupid plumbing tests.
+- Possible issues. Might be slower. Best to mix and match, maybe? Harder to isolate exactly where it's going wrong. Just don't write those stupid plumbing tests.
 - Goal is a suite of tests that give you confidence you've not fucked it. It's deterministic and reproducible. Call it what you want.
