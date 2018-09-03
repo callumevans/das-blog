@@ -187,7 +187,7 @@ public class AddBehaviourTests : IClassFixture<WebApplicationFactory<Startup>>
 This is so simple and I absolutely love it. In a single, less-brittle test we've covered the same functionality
 that our other three tests have. We didn't need a single mock. We've written less code that needs less maintenance to do the
 same thing. We also get the added benefit of being able to test that the API can actually handle the request; if model bindings for
-our rote weren't configured or some dependencies weren't registered with the ASP service provider correctly our previous
+our route weren't configured or some dependencies weren't registered with the ASP service provider correctly our previous
 tests wouldn't have flagged anything. These tests are still fast enough to allow for continuous re-running, and you can step into
 and debug them without any extra effort.
 
