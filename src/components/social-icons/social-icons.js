@@ -11,6 +11,10 @@ const SocialIcons = () => (
       <i className="fab fa-twitter" />
     </a>
 
+    <a href="https://www.instagram.com/callumevans.1992/" className={styles.instagram}>
+        <i className="fab fa-instagram" />
+    </a>
+
     <a href="https://github.com/callumevans" className={styles.github}>
       <i className="fab fa-github-alt" />
     </a>
