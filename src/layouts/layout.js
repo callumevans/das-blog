@@ -1,11 +1,11 @@
-import React from 'react';
-import Helmet from "react-helmet";
+import React from 'react'
+import Helmet from 'react-helmet'
 
-import styles from './layout.module.scss';
+import styles from './layout.module.scss'
 
-import Headshot from '../components/headshot/headshot';
-import SocialIcons from '../components/social-icons/social-icons';
-import MainNav from '../components/main-nav/main-nav';
+import Headshot from '../components/headshot/headshot'
+import SocialIcons from '../components/social-icons/social-icons'
+import MainNav from '../components/main-nav/main-nav'
 import SiteConfig from '../SiteConfig'
 
 class Layout extends React.Component {
@@ -20,7 +20,6 @@ class Layout extends React.Component {
           title={SiteConfig.siteTitle}
           link={[
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Arvo|Scope+One' },
-
             { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
             { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
             { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
