@@ -34,7 +34,12 @@ class Layout extends React.Component {
           ]}
           meta={[
             { name: 'description', content: SiteConfig.siteDescription },
-            { name: 'author', content: 'Callum Evans' }
+            { name: 'keywords', content: SiteConfig.siteKeywords },
+            { name: 'author', content: 'Callum Evans' },
+            { name: 'twitter:account_id', content: SiteConfig.twitterAccountId },
+            { name: 'twitter:creator', content: SiteConfig.twitterCreator },
+            { name: 'twitter:site', content: SiteConfig.twitterCreator },
+            { name: 'og:url', content: SiteConfig.siteUrl }
           ]}
         />
         <div className={styles.mainContainer}>

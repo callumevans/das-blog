@@ -60,11 +60,11 @@ class PostSeo extends React.Component {
         </script>
 
         { /* OpenGraph */ }
-        <meta property="og:site_name" content={SiteConfig.siteTitle} />
-        <meta property="og:url" content={postSeo ? postUrl : SiteConfig.siteUrl} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta name="og:url" content={postSeo ? postUrl : SiteConfig.siteUrl} />
+        <meta name="og:site_name" content={postSeo ? postUrl : SiteConfig.siteTitle} />
+        <meta name="og:type" content="article" />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={description} />
 
         { /* Twitter Cards */ }
         <meta name="twitter:card" content="summary_large_image" />
