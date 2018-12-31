@@ -33,7 +33,8 @@ class Layout extends React.Component {
             { src: 'https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', async: true }
           ]}
           meta={[
-            { name: 'description', content: SiteConfig.siteDescription }
+            { name: 'description', content: SiteConfig.siteDescription },
+            { name: 'author', content: 'Callum Evans' }
           ]}
         />
         <div className={styles.mainContainer}>
