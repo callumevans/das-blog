@@ -5,13 +5,25 @@ import SiteConfig from "../../SiteConfig";
 class Seo extends React.Component {
   render() {
     const schemaOrgJSONLD = [
-      {
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        url: SiteConfig.siteUrl,
-        name: SiteConfig.siteTitle,
-        alternateName: ""
-      }
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            url: SiteConfig.siteUrl,
+            name: SiteConfig.siteTitle,
+            alternateName: ""
+        },
+        {
+            "@context": "http://schema.org",
+            "@type": "Person",
+            "name": "Callum Evans",
+            "url": "https://callums.blog",
+            "sameAs": [
+                "https://www.facebook.com/callumevans.1992",
+                "https://www.linkedin.com/in/callum-evans/",
+                "https://github.com/callumevans",
+                "https://twitter.com/callum_evans"
+            ]
+        }
     ];
 
     return (

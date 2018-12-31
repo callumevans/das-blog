@@ -25,18 +25,6 @@ class PostSeo extends React.Component {
         },
         {
             "@context": "http://schema.org",
-            "@type": "Person",
-            "name": "Callum Evans",
-            "url": "https://callums.blog",
-            "sameAs": [
-                "https://www.facebook.com/callumevans.1992",
-                "https://www.linkedin.com/in/callum-evans/",
-                "https://github.com/callumevans",
-                "https://twitter.com/callum_evans"
-            ]
-        },
-        {
-            "@context": "http://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
                 {
