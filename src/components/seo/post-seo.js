@@ -5,7 +5,6 @@ import SiteConfig from "../../SiteConfig";
 class PostSeo extends React.Component {
   render() {
     const {
-      postSeo,
       postNode,
       postPath
     } = this.props;
@@ -60,8 +59,8 @@ class PostSeo extends React.Component {
         </script>
 
         { /* OpenGraph */ }
-        <meta name="og:url" content={postSeo ? postUrl : SiteConfig.siteUrl} />
-        <meta name="og:site_name" content={postSeo ? postUrl : SiteConfig.siteTitle} />
+        <meta name="og:url" content={postUrl} />
+        <meta name="og:site_name" content={SiteConfig.siteTitle} />
         <meta name="og:type" content="article" />
         <meta name="og:title" content={title} />
         <meta name="og:description" content={description} />
@@ -70,9 +69,9 @@ class PostSeo extends React.Component {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        { SiteConfig.twitterAccountId && <meta name="twitter:account_id" content={SiteConfig.twitterAccountId} /> }
-        { SiteConfig.twitterCreator && <meta name="twitter:creator" content={SiteConfig.twitterCreator} /> }
-        { SiteConfig.twitterCreator && <meta name="twitter:site" content={SiteConfig.twitterCreator} /> }
+        <meta name="twitter:account_id" content={SiteConfig.twitterAccountId} />
+        <meta name="twitter:creator" content={SiteConfig.twitterCreator} />
+        <meta name="twitter:site" content={SiteConfig.twitterCreator} />
       </Helmet>
     )
   }

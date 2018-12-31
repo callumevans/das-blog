@@ -26,17 +26,24 @@ class Seo extends React.Component {
           {JSON.stringify(schemaOrgJSONLD)}
         </script>
 
+        <meta name="description" content={SiteConfig.siteDescription} />
+        <meta name="keywords" content={SiteConfig.siteKeywords} />
+        <meta name="author" content="Callum Evans" />
+
         { /* OpenGraph */ }
-        <meta property="og:url" content={SiteConfig.siteUrl} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        { SiteConfig.facebookAppId && <meta property="fb:app_id" content={SiteConfig.facebookAppId} /> }
+        <meta name="og:url" content={SiteConfig.siteUrl} />
+        <meta name="og:site_name" content={SiteConfig.siteTitle} />
+        <meta name="og:type" content="article" />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={description} />
 
         { /* Twitter Cards */ }
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        { SiteConfig.twitterUserId && <meta name="twitter:creator" content={SiteConfig.twitterUserId} /> }
+        <meta name="twitter:account_id" content={SiteConfig.twitterAccountId} />
+        <meta name="twitter:creator" content={SiteConfig.twitterCreator} />
+        <meta name="twitter:site" content={SiteConfig.twitterCreator} />
       </Helmet>
     )
   }
