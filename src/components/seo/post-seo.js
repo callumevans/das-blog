@@ -16,36 +16,48 @@ class PostSeo extends React.Component {
     const postUrl = `${SiteConfig.siteUrl}/${postPath}`;
 
     const schemaOrgJSONLD = [
-      {
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        url: SiteConfig.siteUrl,
-        name: title,
-        alternateName: ""
-      },
-      {
-        "@context": "http://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            item: {
-              "@id": postUrl,
-              name: title
-            }
-          }
-        ]
-      },
-      {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        url: SiteConfig.siteUrl,
-        name: title,
-        alternateName: "",
-        headline: title,
-        description
-      }
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            url: SiteConfig.siteUrl,
+            name: title,
+            alternateName: ""
+        },
+        {
+            "@context": "http://schema.org",
+            "@type": "Person",
+            "name": "Callum Evans",
+            "url": "https://callums.blog",
+            "sameAs": [
+                "https://www.facebook.com/callumevans.1992",
+                "https://www.linkedin.com/in/callum-evans/",
+                "https://github.com/callumevans",
+                "https://twitter.com/callum_evans"
+            ]
+        },
+        {
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                {
+                    "@type": "ListItem",
+                    position: 1,
+                    item: {
+                        "@id": postUrl,
+                        name: title
+                    }
+                }
+            ]
+        },
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            url: SiteConfig.siteUrl,
+            name: title,
+            alternateName: "",
+            headline: title,
+            description
+        }
     ];
 
     return (
