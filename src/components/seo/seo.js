@@ -4,23 +4,18 @@ import SiteConfig from "../../SiteConfig";
 
 class Seo extends React.Component {
   render() {
-    const title = SiteConfig.siteTitle;
-    const description = SiteConfig.siteDescription;
-
     const schemaOrgJSONLD = [
       {
         "@context": "http://schema.org",
         "@type": "WebSite",
         url: SiteConfig.siteUrl,
-        name: title,
+        name: SiteConfig.siteTitle,
         alternateName: ""
       }
     ];
 
     return (
       <Helmet>
-        <meta name="description" content={description} />
-
         { /* Schema.org */ }
         <script type="application/ld+json">
           {JSON.stringify(schemaOrgJSONLD)}
@@ -34,13 +29,13 @@ class Seo extends React.Component {
         <meta name="og:url" content={SiteConfig.siteUrl} />
         <meta name="og:site_name" content={SiteConfig.siteTitle} />
         <meta name="og:type" content="article" />
-        <meta name="og:title" content={title} />
-        <meta name="og:description" content={description} />
+        <meta name="og:title" content={SiteConfig.siteTitle} />
+        <meta name="og:description" content={SiteConfig.siteDescription} />
 
         { /* Twitter Cards */ }
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
+        <meta name="twitter:title" content={SiteConfig.siteTitle} />
+        <meta name="twitter:description" content={SiteConfig.siteDescription} />
         <meta name="twitter:account_id" content={SiteConfig.twitterAccountId} />
         <meta name="twitter:creator" content={SiteConfig.twitterCreator} />
         <meta name="twitter:site" content={SiteConfig.twitterCreator} />

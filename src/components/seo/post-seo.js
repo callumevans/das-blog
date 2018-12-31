@@ -51,12 +51,13 @@ class PostSeo extends React.Component {
     return (
       <Helmet>
         <title>{`${title} - ${SiteConfig.siteTitle}`}</title>
-        <meta name="description" content={description} />
 
         { /* Schema.org */ }
         <script type="application/ld+json">
           {JSON.stringify(schemaOrgJSONLD)}
         </script>
+
+        <meta name="description" content={description} />
 
         { /* OpenGraph */ }
         <meta name="og:url" content={postUrl} />
