@@ -32,9 +32,6 @@ class Layout extends React.Component {
             { src: 'https://use.fontawesome.com/releases/v5.0.13/js/brands.js', async: true },
             { src: 'https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', async: true }
           ]}
-          meta={[
-            { name: 'description', content: SiteConfig.siteDescription }
-          ]}
         />
         <div className={styles.mainContainer}>
           <div className={styles.headshotContainer}>
