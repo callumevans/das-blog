@@ -72,7 +72,6 @@ p {
 }
 
 
-:global {
   :not(pre) > code[class*="language-"] {
     padding: .3em !important;
     font-size: .85em !important;
@@ -110,4 +109,4 @@ p {
   .twitter-tweet {
     margin: 0 auto;
   }
-}
+
