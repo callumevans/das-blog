@@ -18,6 +18,9 @@ class Layout extends React.Component {
       <div>
         <Helmet
           title={SiteConfig.siteTitle}
+          htmlAttributes={{
+              lang: 'en'
+          }}
           link={[
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Arvo|Scope+One&display=swap' },
             { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
