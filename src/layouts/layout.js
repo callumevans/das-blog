@@ -18,6 +18,9 @@ class Layout extends React.Component {
       <div>
         <Helmet
           title={SiteConfig.siteTitle}
+          htmlAttributes={{
+              lang: 'en'
+          }}
           link={[
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Arvo|Scope+One&display=swap' },
             { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
@@ -32,9 +35,7 @@ class Layout extends React.Component {
             { src: 'https://use.fontawesome.com/releases/v5.0.13/js/brands.js', async: true },
             { src: 'https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', async: true }
           ]}
-        >
-            <html lang="en" />
-        </Helmet>
+        />
         <div className={styles.mainContainer}>
           <div className={styles.headshotContainer}>
             <Headshot />
