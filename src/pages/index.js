@@ -1,6 +1,7 @@
 import React from 'react'
 import Seo from '../components/seo/seo'
 import PostSummary from "../components/post-summary/post-summary"
+import { graphql } from 'gatsby';
 
 import 'prismjs/themes/prism-okaidia.css'
 import Layout from '../layouts/layout'

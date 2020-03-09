@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './post.module.scss'
 import Layout from '../../layouts/layout'
 import PostSeo from '../../components/seo/post-seo'
+import { graphql } from 'gatsby';
 
 const Post = ({ data }) => (
   <Layout>
