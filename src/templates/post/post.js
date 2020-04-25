@@ -2,7 +2,8 @@ import React from 'react'
 import styles from './post.module.scss'
 import Layout from '../../layouts/layout'
 import PostSeo from '../../components/seo/post-seo'
-import Commento from "react-commento";
+import { graphql } from 'gatsby';
+import Commento from 'react-commento';
 
 const Post = ({ data }) => (
   <Layout>
