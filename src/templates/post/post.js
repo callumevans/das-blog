@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './post.module.scss'
 import Layout from '../../layouts/layout'
 import PostSeo from '../../components/seo/post-seo'
+import Helmet from "react-helmet";
 
 const Post = ({ data }) => (
   <Layout>
@@ -18,6 +19,12 @@ const Post = ({ data }) => (
       <section dangerouslySetInnerHTML={{ __html: data.markdownRemark.html}} />
     </article>
     <div id="commento" />
+    <Helmet
+      script={[
+          { src: 'https://cdn.commento.io/js/commento.js', defer: true }
+      ]}
+  />
+
   </Layout>
 )
 

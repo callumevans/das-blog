@@ -34,7 +34,6 @@ class Layout extends React.Component {
           script={[
             { src: 'https://use.fontawesome.com/releases/v5.0.13/js/brands.js', async: true },
             { src: 'https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', async: true },
-            { src: 'https://cdn.commento.io/js/commento.js', defer: true }
           ]}
         />
         <div className={styles.mainContainer}>
