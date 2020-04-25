@@ -17,8 +17,7 @@ const Post = ({ data }) => (
       </header>
       <section dangerouslySetInnerHTML={{ __html: data.markdownRemark.html}} />
     </article>
-    <div id="commento"></div>
-    <script defer src="https://cdn.commento.io/js/commento.js"></script>
+    <div id="commento" />
   </Layout>
 )
 
