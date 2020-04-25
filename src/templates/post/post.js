@@ -3,6 +3,7 @@ import styles from './post.module.scss'
 import Layout from '../../layouts/layout'
 import PostSeo from '../../components/seo/post-seo'
 import { graphql } from 'gatsby';
+import Commento from "react-commento";
 
 const Post = ({ data }) => (
   <Layout>
@@ -18,6 +19,7 @@ const Post = ({ data }) => (
       </header>
       <section dangerouslySetInnerHTML={{ __html: data.markdownRemark.html}} />
     </article>
+    <Commento id={data.markdownRemark.frontmatter.slug} />
   </Layout>
 )
 
