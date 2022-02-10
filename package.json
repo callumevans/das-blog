@@ -17,7 +17,7 @@
     "gatsby-transformer-remark": "^2.6.53",
     "gatsby-plugin-twitter": "^2.1.19",
     "include-media": "^1.4.9",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.19.0",
     "react": "^16.13.0",
