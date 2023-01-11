@@ -14,7 +14,7 @@
     "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-remark-prismjs": "^3.3.31",
     "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-transformer-remark": "^2.6.53",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-plugin-twitter": "^2.1.19",
     "include-media": "^1.4.9",
     "node-sass": "^4.13.1",
